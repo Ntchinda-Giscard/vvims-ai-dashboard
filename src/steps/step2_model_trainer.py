@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 from zenml.logger import get_logger
-from zenml import ArtifactConfig, log_metadata, step
+from zenml import step
 from src.components.model_trainer import YoloModelTrainer
 from src.config.get_config import ConfigManager
 from typing import Annotated
@@ -29,8 +29,8 @@ def model_trainer_step(dataset: Dataset) -> Annotated[ YOLO ,"model"]:
     try:
         logger.info(f"\33[33m>>>>> 1️⃣ {STAGE_NAME}📀 step has started 🏁🏁 <<<<<\33[0m")
         obj = ModelTrainerStep()
-        dataset = obj.main(dataset)
+        model = obj.main(dataset)
         logger.info(f"\33[33m>>>>> ✅ {STAGE_NAME}📀 step has completed x=========x\33[0m")
-        return dataset
+        return model
     except Exception as e:
-        logger.exception(f"Oops😟! An error occured: {e} ")
+        logger.exception(f"Oops😟! An error occurred: {e} ")

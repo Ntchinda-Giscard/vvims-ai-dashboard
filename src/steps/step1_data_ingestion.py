@@ -1,4 +1,4 @@
-from typing import (Type, Annotated)
+from typing import ( Annotated)
 import roboflow
 from zenml import step
 from src.components.data_ingestion import DataIngestion
@@ -30,8 +30,8 @@ def data_ingestion() -> Annotated[roboflow.core.dataset.Dataset, "dataset"]:
         logger.info(f"\33[33m>>>>> 1️⃣ {STAGE_NAME}📀 step has started 🏁🏁 <<<<<\33[0m")
         obj = DataIngestionStep()
         dataset = obj.main()
-        logger.info(f"\33[33m>>>>> ✅ {STAGE_NAME}📀 step has completedx=========x\33[0m")
+        logger.info(f"\33[33m>>>>> ✅ {STAGE_NAME}📀 step has completed x=========x\33[0m")
         return dataset
     except Exception as e:
-        logger.exception(f"Oops😟! An error occured: {e} ")
+        logger.exception(f"Oops😟! An error occurred: {e} ")
 
