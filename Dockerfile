@@ -11,7 +11,7 @@ ENV PERSIST_DIRECTORY=/chroma/chroma
 ENV ANONYMIZED_TELEMETRY=TRUE
 
 # Expose the port that Chroma DB will listen on
-EXPOSE 8000
+EXPOSE 7860
 
 # Launch the Chroma DB server on all interfaces at port 8000
-CMD ["chromadb", "serve", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["chromadb", "serve", "--host", "0.0.0.0", "--port", "7860"]
