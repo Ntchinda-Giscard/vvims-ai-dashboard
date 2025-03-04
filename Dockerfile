@@ -1,19 +1,38 @@
-# Use the official Chroma DB image as a base
-FROM chromadb/chroma
+FROM python:3.9
 
-# Create a non-root user with UID 1000 (required by Hugging Face Spaces)
-RUN useradd -m -u 1000 appuser
-USER appuser
+# Step 1: Switch to root user to install dependencies
+USER root
 
-# Set environment variables for persistence and telemetry (optional)
-ENV IS_PERSISTENT=TRUE
-ENV PERSIST_DIRECTORY=/chroma/chroma
-ENV ANONYMIZED_TELEMETRY=TRUE
-ENV CHROMA_SERVER_AUTHN_CREDENTIALS=admin:$2y$10$hUmPdJAj.D5lThp.kFeTwO7icauWTXfFB8NFfCfbVj./kN2YQRh9C
-ENV CHROMA_SERVER_AUTHN_PROVIDER=chromadb.auth.basic_authn.BasicAuthenticationServerProvider
+# Ensure /var/lib/apt/lists exists and has the right permissions
+RUN mkdir -p /var/lib/apt/lists/partial && \
+    chmod -R 755 /var/lib/apt/lists
 
-# Expose the port that Chroma DB will listen on
-EXPOSE 7860
+# Step 2: Install necessary packages
+RUN apt-get update && \
+    apt-get install -y libgl1-mesa-glx && \
+    rm -rf /var/lib/apt/lists/*
 
-# Launch the Chroma DB server on all interfaces at port 8000
-CMD ["chromadb", "serve", "--host", "0.0.0.0", "--port", "7860"]
+# Step 3: Create the user
+RUN adduser --disabled-password --gecos "" myuser
+
+# Step 4: Create the /uploads directory and set ownership
+RUN mkdir /uploads && chown -R myuser:myuser /uploads
+
+# Step 5: Switch to myuser to run the app
+USER myuser
+ENV PATH="/home/myuser/.local/bin:$PATH"
+
+# Step 6: Set the working directory
+WORKDIR /app
+
+# Step 7: Copy requirements file with proper ownership
+COPY --chown=myuser ./requirements.txt requirements.txt
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+# Step 8: Copy the rest of the application code with proper ownership
+COPY --chown=myuser . /app
+
+# Step 9: Command to run the application
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
