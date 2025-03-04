@@ -3,7 +3,7 @@ import streamlit as st
 import numpy as np
 import tempfile
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 st.title("Video Capture with OpenCV")
 
