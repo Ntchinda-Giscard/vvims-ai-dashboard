@@ -8,4 +8,4 @@ cap = cv2.VideoCapture(0)
 st.title("Video Capture with OpenCV")
 
 frame_placeholder = st.empty()
-stop_button = st.button()
+stop_button = st.button("stop")
