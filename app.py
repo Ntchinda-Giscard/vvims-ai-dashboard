@@ -5,6 +5,7 @@ import tempfile
 
 
 rtsp = f"rtsp://admin:admin@192.168.2.71/ch0_0.264"
+
 cap = cv2.VideoCapture(rtsp)
 
 st.title("Video Capture with OpenCV")
