@@ -4,7 +4,7 @@ import streamlit as st
 import tempfile
 
 
-rtsp = f"rtsp://admin:admin@192.168.2.71:554/h264/ch1/main/av_stream"
+rtsp = f"rtsp://admin:admin@192.168.1.71/ch0_0.264"
 cap = cv2.VideoCapture(rtsp)
 
 st.title("Video Capture with OpenCV")
