@@ -1,9 +1,11 @@
 import cv2
 import streamlit as st
-import numpy as np
+# import numpy as np
 import tempfile
 
-cap = cv2.VideoCapture(1)
+
+rtsp = f"rtsp://192.168.2.45:80/channel/9"
+cap = cv2.VideoCapture(0)
 
 st.title("Video Capture with OpenCV")
 
