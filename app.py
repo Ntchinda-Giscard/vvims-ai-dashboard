@@ -4,13 +4,14 @@ import streamlit as st
 import tempfile
 
 
-rtsp = f"rtsp://192.168.2.71/ch0_0.264"
+rtsp = f"admin:admin@rtsp://192.168.2.71/ch0_0.264"
 cap = cv2.VideoCapture(rtsp)
 
 st.title("Video Capture with OpenCV")
 
 frame_placeholder = st.empty()
 stop_button = st.button("stop")
+start_button = st.button("start")
 
 while cap.isOpened() and not stop_button:
     ret, frame = cap.read()
