@@ -54,4 +54,4 @@ if start_button:
             break
 
 cap.release()
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
