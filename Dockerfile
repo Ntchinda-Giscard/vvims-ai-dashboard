@@ -9,6 +9,7 @@ RUN mkdir -p /var/lib/apt/lists/partial && \
 
 # Step 2: Install necessary packages
 RUN apt-get update && \
+    apt-get install ffmpeg && \
     apt-get install -y libgl1-mesa-glx && \
     rm -rf /var/lib/apt/lists/*
 
