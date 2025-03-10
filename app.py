@@ -25,7 +25,7 @@ stop_button = st.button("Stop")
 start_button = st.button("Start")
 
 if not cap.isOpened():
-    print("Failed to open stream")
+    st.write("The video has ended or could not be read.")
 
 # When the start button is pressed, begin processing the video stream.
 if start_button:
