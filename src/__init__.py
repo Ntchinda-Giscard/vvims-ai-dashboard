@@ -1,1 +1,1 @@
-from .utils.common import down_load_from_s3
+from .utils.common import read_yaml

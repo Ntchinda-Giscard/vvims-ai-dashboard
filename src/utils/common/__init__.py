@@ -29,3 +29,5 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise ValueError("Yaml file is empty")
     except Exception as e:
         raise e
+
+
