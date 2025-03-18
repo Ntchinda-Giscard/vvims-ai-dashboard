@@ -1,8 +1,11 @@
 import boto3
+import yaml
 from box.exceptions import BoxValueError
 from box import ConfigBox
 from pathlib import Path
+from zenml.logger import get_logger
 
+logger = get_logger(__name__)
 
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """
