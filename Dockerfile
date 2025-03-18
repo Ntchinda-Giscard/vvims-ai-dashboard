@@ -34,7 +34,8 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 RUN zenml login https://ntchinda-giscard-zenml.hf.space
 RUN zenml secret create s3_secret \
     --aws_access_key_id='AKIAR2BMOVON3NQAL2UV' \
-    --aws_secret_access_key='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' \
+    --aws_secret_access_key='Bax0lrK5YlD95hruasIgr0VWZkHgoV5y52atrU4y'
+
 RUN zenml artifact-store register s3_store -f s3 \
     --path='s3://vvims-ai' \
     --authentication_secret=s3_secret
