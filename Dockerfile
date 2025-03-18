@@ -31,7 +31,7 @@ COPY --chown=myuser ./requirements.txt requirements.txt
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-RUN zenml login https://ntchinda-giscard-zenml.hf.space --api-key
+RUN zenml login https://ntchinda-giscard-zenml.hf.space
 
 
 
