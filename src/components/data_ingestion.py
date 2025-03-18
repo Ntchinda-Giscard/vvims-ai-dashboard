@@ -1,12 +1,18 @@
 from roboflow import Roboflow
-import os
-rf = Roboflow(api_key="P4usj8uPwcbnflvyJIAB")
-project = rf.workspace("ntchindagiscard").project("id-card-information")
-version = project.version(1)
-dataset = version.download("yolov12")
+from src.base import DataIngestor
+from src.config.get_config import ConfigManager
 
 
-class DataIngestion:
+class DataIngestion(DataIngestor):
 
-    def __init__(self):
-        roboflow_api_key = os.getenv("ROBOFLOW_API_KEY")
+    def __init__(self, config: ConfigManager):
+        self.config = config.get_data_ingestion_config()
+
+    def ingest_data(self):
+        rf = Roboflow(api_key=self.config.roboflow_api_key)
+        project = rf.workspace(self.config.workspace).project(self.config.project)
+        version = project.version(self.config.version)
+
+        dataset = version.download(self.config.dataset)
+
+        return  dataset
