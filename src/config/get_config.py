@@ -14,12 +14,13 @@ class ConfigManager:
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         config = self.config.data_ingestion
+        api_key = os.getenv("ROBOFLOW_API_KEY")
         data_ingestion_config = DataIngestionConfig(
             workspace=config.workspace,
             project=config.project,
             version=config.version,
             dataset=config.dataset,
-            roboflow_api_key=os.getenv("ROBOFLOW_API_KEY")
+            roboflow_api_key=api_key
         )
         print(f">>>>>>>>>>>>> Configurations {data_ingestion_config}")
 
