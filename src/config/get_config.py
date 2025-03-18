@@ -1,7 +1,5 @@
-
 from src import read_yaml
 import os
-
 from src.constants import CONFIG_FILE_PATH
 from src.entity.config_entity import DataIngestionConfig
 
