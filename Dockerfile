@@ -38,5 +38,4 @@ COPY --chown=myuser . /app
 
 # Step 9: Command to run the application
 CMD ["python", "main.py"]
-
 CMD ["streamlit", "run", "app.py", "--server.port", "7860"]
