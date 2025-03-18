@@ -9,6 +9,7 @@ class DataIngestion(DataIngestor):
         self.config = config
 
     def ingest_data(self):
+        print(f">>>>>>>> Roboflow api key {self.config.roboflow_api_key}")
         rf = Roboflow(api_key=self.config.roboflow_api_key)
         project = rf.workspace(self.config.workspace).project(self.config.project)
         version = project.version(self.config.version)
