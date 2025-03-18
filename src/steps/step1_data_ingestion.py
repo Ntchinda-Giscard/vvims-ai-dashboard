@@ -32,7 +32,7 @@ def data_ingestion() -> Annotated[roboflow.core.dataset.Dataset, "dataset"]:
         obj = DataIngestionStep()
         dataset = obj.main()
         logger.info(f"\33[33m>>>>> ✅ {STAGE_NAME}📀 step has completedx=========x\33[0m")
+        return dataset
     except Exception as e:
         logger.exception(f"Oops😟! An error occured: {e} ")
 
-    return dataset
