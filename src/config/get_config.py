@@ -22,4 +22,6 @@ class ConfigManager:
             roboflow_api_key=os.getenv("ROBOFLOW_API_KEY")
         )
 
+        print(f">>>>>>>>>>>>> Configurations {data_ingestion_config}")
+
         return data_ingestion_config
