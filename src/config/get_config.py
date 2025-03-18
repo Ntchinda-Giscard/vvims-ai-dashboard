@@ -1,7 +1,10 @@
-from src import CONFIG_FILE_PATH
+
 from src import read_yaml
-from src import DataIngestionConfig
 import os
+
+from src.constants import CONFIG_FILE_PATH
+from src.entity.config_entity import DataIngestionConfig
+
 
 class ConfigManager:
 
