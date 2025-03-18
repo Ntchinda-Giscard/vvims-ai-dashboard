@@ -29,4 +29,3 @@ def data_ingestion() -> Dataset:
     logger.info(f"\33[33m>>>>> ✅ {STAGE_NAME}📀 step has completedx=========x\33[0m")
 
     return dataset
-
