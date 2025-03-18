@@ -1,8 +1,6 @@
 from roboflow import Roboflow
-from src import DataIngestionConfig
 from src.base import DataIngestor
-
-
+from src.entity.config_entity import DataIngestionConfig
 
 
 class DataIngestion(DataIngestor):
