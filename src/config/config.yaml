@@ -1,0 +1,5 @@
+data_ingestion:
+  workspace: "ntchindagiscard"
+  project: "id-card-information"
+  version: 1
+  dataset: "yolov12"
