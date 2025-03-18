@@ -1,12 +1,14 @@
 from roboflow import Roboflow
+from src import DataIngestionConfig
 from src.base import DataIngestor
-from src.config.get_config import ConfigManager
+
+
 
 
 class DataIngestion(DataIngestor):
 
-    def __init__(self, config: ConfigManager):
-        self.config = config.get_data_ingestion_config()
+    def __init__(self, config: DataIngestionConfig):
+        self.config = config
 
     def ingest_data(self):
         rf = Roboflow(api_key=self.config.roboflow_api_key)
