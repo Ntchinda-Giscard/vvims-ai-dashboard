@@ -1,3 +1,5 @@
+from typing import Any
+
 from zenml import step
 from src.components.data_ingestion import DataIngestion
 from src.config.get_config import ConfigManager
