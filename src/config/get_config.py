@@ -20,7 +20,7 @@ class ConfigManager:
             project=config.project,
             version=config.version,
             dataset=config.dataset,
-            roboflow_api_key=api_key
+            roboflow_api_key="P4usj8uPwcbnflvyJIAB"
         )
         print(f">>>>>>>>>>>>> Configurations {data_ingestion_config}")
 
