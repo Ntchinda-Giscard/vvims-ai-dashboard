@@ -40,8 +40,6 @@ RUN zenml login https://ntchinda-giscard-zenml.hf.space
 #    --path='s3://vvims-ai' \
 #    --authentication_secret=s3_secret
 
-
-
 # Step 8: Copy the rest of the application code with proper ownership
 COPY --chown=myuser . /app
 
