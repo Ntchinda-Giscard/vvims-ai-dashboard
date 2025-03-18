@@ -31,6 +31,7 @@ COPY --chown=myuser ./requirements.txt requirements.txt
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN zenml login https://ntchinda-giscard-zenml.hf.space ZENKEY_eyJpZCI6IjZhY2M1Y2QyLThlMmEtNGRhZC05ODZmLTgyZmFmMmMxNDdjYSIsImtleSI6IjNkZmIxYjFkMzc1NDQ0ZGQyMzdhMThjYzhhZGE2YWNkZDM0YjVmNzk5MWIyOWRjZjcyMmFlMzYzY2E2ZTJiNDkifQ==
 
 # Step 8: Copy the rest of the application code with proper ownership
 COPY --chown=myuser . /app
