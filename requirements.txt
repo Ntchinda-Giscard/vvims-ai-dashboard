@@ -6,3 +6,4 @@ zenml==0.72.0
 python-box==6.0.2
 roboflow
 boto3
+ultralytics
