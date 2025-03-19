@@ -1,6 +1,10 @@
 from src import data_ingestion
 from zenml import pipeline
 
+from src.steps.step2_model_trainer import model_trainer
+
+
 @pipeline
 def training_pipeline():
-    data_ingestion()
+    dataset = data_ingestion()
+    model = model_trainer(dataset)
