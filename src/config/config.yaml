@@ -5,6 +5,7 @@ data_ingestion:
   dataset: "yolov12"
 
 model_trainer:
+  data: "id-card-information-1"
   model: "yolo12x"
   epochs: 200
   batch: 32

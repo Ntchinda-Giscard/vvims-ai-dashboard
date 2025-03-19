@@ -11,6 +11,7 @@ class DataIngestionConfig:
 
 @dataclass
 class ModelTrainerConfig:
+    data: str
     model: str
     epochs: str
     batch: int
