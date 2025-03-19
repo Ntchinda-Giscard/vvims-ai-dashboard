@@ -1,7 +1,7 @@
 from src import read_yaml
 import os
 from src.constants import CONFIG_FILE_PATH
-from src.entity.config_entity import DataIngestionConfig
+from src.entity.config_entity import DataIngestionConfig, ModelTrainerConfig
 
 
 class ConfigManager:
@@ -20,6 +20,21 @@ class ConfigManager:
             dataset=config.dataset,
             roboflow_api_key="P4usj8uPwcbnflvyJIAB"
         )
-        print(f">>>>>>>>>>>>> Configurations {data_ingestion_config}")
 
         return data_ingestion_config
+
+    def get_model_trainer(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+
+        model_trainer_config = ModelTrainerConfig(
+            data=config.data,
+            model=config.model,
+            epochs=config.epochs,
+            batch=config.batch,
+            imgsz=config.imgsz,
+            device=config.device,
+            scale=config.scale,
+            mixup=config.mixup
+        )
+
+        return model_trainer_config
