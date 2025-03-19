@@ -22,8 +22,7 @@ class RoboflowDatasetMaterializer(BaseMaterializer):
 
         metadata = {
             "name": dataset.name if hasattr(dataset, "name") else "Unknown",
-            "version": dataset.versi
-            on if hasattr(dataset, "version") else "Unknown",
+            "version": dataset.version if hasattr(dataset, "version") else "Unknown",
             "size": dataset.size if hasattr(dataset, "size") else "Unknown",
             "classes": dataset.classes if hasattr(dataset, "classes") else [],
         }
