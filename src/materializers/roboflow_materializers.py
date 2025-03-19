@@ -18,8 +18,16 @@ class RoboflowDatasetMaterializer(BaseMaterializer):
         return dataset
 
     def save(self, dataset: roboflow.core.dataset.Dataset) -> None:
-        """Save the dataset to the artifact store."""
-        # Use available methods to extract metadata
-        metadata = dataset.get_metadata()  # Replace with actual method
-        with self.artifact_store.open(os.path.join(self.uri, 'metadata.json'), 'w') as f:
+        """Save dataset metadata to the artifact store."""
+
+        metadata = {
+            "name": dataset.name if hasattr(dataset, "name") else "Unknown",
+            "version": dataset.versi
+            on if hasattr(dataset, "version") else "Unknown",
+            "size": dataset.size if hasattr(dataset, "size") else "Unknown",
+            "classes": dataset.classes if hasattr(dataset, "classes") else [],
+        }
+
+        with self.artifact_store.open(os.path.join(self.uri, "metadata.json"), "w") as f:
             json.dump(metadata, f)
+
