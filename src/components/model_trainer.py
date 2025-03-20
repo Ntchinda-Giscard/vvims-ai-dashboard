@@ -1,28 +1,33 @@
 from abc import ABC
 from typing import Type
 from ultralytics import YOLO
-
 from src.base import ModelTrainer
 from src.entity.config_entity import ModelTrainerConfig
 import os
 
-
 class YoloModelTrainer(ModelTrainer):
-
     def __init__(self, config: ModelTrainerConfig):
         self.config = config
 
     def train(self, dataset) -> YOLO:
+        # Get the CORRECT dataset path (fix nested folder issue)
+        dataset_path = os.path.join(dataset.location, dataset.name)  # Fix nested folder
+        data_yaml_path = os.path.join(dataset_path, "data.yaml")  # Correct YAML path
+
+        # Verify paths (debugging)
+        print(f"[DEBUG] Dataset root: {dataset.location}")
+        print(f"[DEBUG] Expected dataset folder: {dataset_path}")
+        print(f"[DEBUG] Contents of dataset.location: {os.listdir(dataset.location)}")
+        print(f"[DEBUG] data.yaml exists: {os.path.exists(data_yaml_path)}")
+
+        # Validate dataset structure
+        assert os.path.exists(data_yaml_path), f"data.yaml not found at {data_yaml_path}"
+        assert os.path.exists(os.path.join(dataset_path, "train", "images")), "Train images missing!"
+
+        # Initialize model and train
         model = YOLO(self.config.model)
-        # Print dataset location
-        print(f"Dataset location: {dataset.location}")
-
-        # Verify folders exist
-        print(os.listdir(dataset.location))  # Should show ["train", "valid", "data.yaml"]
-        print(os.listdir(f"{dataset.location}/train"))  # Should show ["images", "labels"]
-
         results = model.train(
-            data=f"{dataset.location}/data.yaml",
+            data=data_yaml_path,  # Use corrected path
             epochs=self.config.epochs,
             batch=self.config.batch,
             imgsz=self.config.imgsz,
@@ -30,5 +35,4 @@ class YoloModelTrainer(ModelTrainer):
             scale=self.config.scale,
             mixup=self.config.mixup
         )
-
         return model
