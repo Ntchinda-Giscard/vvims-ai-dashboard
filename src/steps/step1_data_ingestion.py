@@ -26,7 +26,7 @@ class DataIngestionStep:
 
 
 @step(enable_cache=False)
-def data_ingestion() -> Annotated[Type[roboflow.core.dataset.Dataset], "dataset"]:
+def data_ingestion() -> Annotated[roboflow.core.dataset.Dataset, "dataset"]:
     try:
         logger.info(f"\33[33m>>>>> 1️⃣ {STAGE_NAME}📀 step has started 🏁🏁 <<<<<\33[0m")
         obj = DataIngestionStep()
