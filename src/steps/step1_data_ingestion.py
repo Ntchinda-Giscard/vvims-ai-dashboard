@@ -5,7 +5,6 @@ from src.components.data_ingestion import DataIngestion
 from src.config.get_config import ConfigManager
 from zenml.logger import get_logger
 
-from src.materializers.roboflow_materializers import RoboflowDatasetMaterializer
 
 logger = get_logger(__name__)
 STAGE_NAME = "Data Ingestion"
