@@ -1,4 +1,4 @@
-from typing import Any, Annotated
+from typing import (Type, Annotated)
 import roboflow
 from zenml import step
 from src.components.data_ingestion import DataIngestion
@@ -25,8 +25,8 @@ class DataIngestionStep:
 
 
 
-@step(output_materializers=RoboflowDatasetMaterializer, enable_cache=False)
-def data_ingestion() -> Annotated[roboflow.core.dataset.Dataset, "dataset"]:
+@step(enable_cache=False)
+def data_ingestion() -> Annotated[Type[roboflow.core.dataset.Dataset], "dataset"]:
     try:
         logger.info(f"\33[33m>>>>> 1️⃣ {STAGE_NAME}📀 step has started 🏁🏁 <<<<<\33[0m")
         obj = DataIngestionStep()
