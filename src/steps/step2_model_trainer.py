@@ -25,7 +25,7 @@ class ModelTrainerStep:
         return model
 
 @step(output_materializers=UltralyticsMaterializer, enable_cache=False)
-def model_trainer(dataset: Dataset) -> Annotated[ YOLO ,"model"]:
+def model_trainer_step(dataset: Dataset) -> Annotated[ YOLO ,"model"]:
     try:
         logger.info(f"\33[33m>>>>> 1️⃣ {STAGE_NAME}📀 step has started 🏁🏁 <<<<<\33[0m")
         obj = ModelTrainerStep()

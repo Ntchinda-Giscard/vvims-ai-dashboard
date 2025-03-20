@@ -12,7 +12,7 @@ class YoloModelTrainer(ModelTrainer):
         self.config = config
 
     def train(self) -> YOLO:
-        model = self.config.model
+        model = YOLO(self.config.model)
         results = model.train(
             data=self.config.data,
             epochs=self.config.epochs,
