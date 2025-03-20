@@ -4,6 +4,7 @@ from ultralytics import YOLO
 
 from src.base import ModelTrainer
 from src.entity.config_entity import ModelTrainerConfig
+import os
 
 
 class YoloModelTrainer(ModelTrainer):
@@ -13,6 +14,13 @@ class YoloModelTrainer(ModelTrainer):
 
     def train(self, dataset) -> YOLO:
         model = YOLO(self.config.model)
+        # Print dataset location
+        print(f"Dataset location: {dataset.location}")
+
+        # Verify folders exist
+        print(os.listdir(dataset.location))  # Should show ["train", "valid", "data.yaml"]
+        print(os.listdir(f"{dataset.location}/train"))  # Should show ["images", "labels"]
+
         results = model.train(
             data=f"{dataset.location}/data.yaml",
             epochs=self.config.epochs,
