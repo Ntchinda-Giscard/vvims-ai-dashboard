@@ -11,10 +11,10 @@ class YoloModelTrainer(ModelTrainer):
     def __init__(self, config: ModelTrainerConfig):
         self.config = config
 
-    def train(self) -> YOLO:
+    def train(self, dataset) -> YOLO:
         model = YOLO(self.config.model)
         results = model.train(
-            data=self.config.data,
+            data=f"{dataset.location}/data.yaml",
             epochs=self.config.epochs,
             batch=self.config.batch,
             imgsz=self.config.imgsz,

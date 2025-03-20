@@ -16,11 +16,11 @@ class ModelTrainerStep:
     def __init__(self):
         self.config = ConfigManager()
 
-    def main(self):
+    def main(self, dataset):
 
         model_trainer_config = self.config.get_model_trainer()
         model_trainer = YoloModelTrainer(model_trainer_config)
-        model = model_trainer.train()
+        model = model_trainer.train(dataset)
 
         return model
 
@@ -29,7 +29,7 @@ def model_trainer_step(dataset: Dataset) -> Annotated[ YOLO ,"model"]:
     try:
         logger.info(f"\33[33m>>>>> 1️⃣ {STAGE_NAME}📀 step has started 🏁🏁 <<<<<\33[0m")
         obj = ModelTrainerStep()
-        dataset = obj.main()
+        dataset = obj.main(dataset)
         logger.info(f"\33[33m>>>>> ✅ {STAGE_NAME}📀 step has completed x=========x\33[0m")
         return dataset
     except Exception as e:

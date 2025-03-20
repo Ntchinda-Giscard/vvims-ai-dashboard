@@ -9,5 +9,5 @@ class DataIngestor(ABC):
 
 class ModelTrainer(ABC):
     @abstractmethod
-    def train(self) -> Type[NotImplementedError]:
+    def train(self, dataset) -> Type[NotImplementedError]:
         return NotImplementedError
