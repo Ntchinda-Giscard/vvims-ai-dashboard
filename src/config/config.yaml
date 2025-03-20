@@ -1,11 +1,11 @@
 data_ingestion:
   workspace: "ntchindagiscard"
-  project: "id-card-information"
+  project: "id_card_annotation"
   version: 1
   dataset: "yolov8"
 
 model_trainer:
-  data: "id-card-information-1"
+  data: "id_card_annotation-1"
   model: "yolov8n.pt"
   epochs: 200
   batch: 32
