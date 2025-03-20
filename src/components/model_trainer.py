@@ -1,33 +1,38 @@
-from abc import ABC
-from typing import Type
+import os
+import yaml  # or ruamel.yaml for better YAML handling
 from ultralytics import YOLO
 from src.base import ModelTrainer
-from pathlib import Path
 from src.entity.config_entity import ModelTrainerConfig
-import os
-
 
 class YoloModelTrainer(ModelTrainer):
     def __init__(self, config: ModelTrainerConfig):
         self.config = config
 
     def train(self, dataset) -> YOLO:
-        # Use dataset.location directly (no subfolder needed)
-        data_yaml_path = os.path.join(dataset.location, "data.yaml")  # ✅ Correct path
+        # Path to the original YAML file
+        data_yaml_path = os.path.join(dataset.location, "data.yaml")
 
-        # Debugging
-        print(f"[DEBUG] Dataset root: {dataset.location}")
-        print(f"[DEBUG] Contents of dataset.location: {os.listdir(dataset.location)}")
-        print(f"[DEBUG] data.yaml exists: {os.path.exists(data_yaml_path)}")
+        # Load the YAML content into a dictionary
+        with open(data_yaml_path, "r") as f:
+            data_config = yaml.safe_load(f)
 
-        # Validate paths
-        assert os.path.exists(data_yaml_path), f"data.yaml not found at {data_yaml_path}"
-        assert os.path.exists(os.path.join(dataset.location, "train", "images")), "Train images missing!"
+        # Override the paths to remove the nested folder
+        data_config["train"] = os.path.join(dataset.location, "train", "images")
+        data_config["val"] = os.path.join(dataset.location, "valid", "images")
+        data_config["test"] = os.path.join(dataset.location, "test", "images")  # optional
 
-        # Train
+        # Debugging: Print corrected paths
+        print(f"[DEBUG] Corrected train path: {data_config['train']}")
+        print(f"[DEBUG] Corrected val path: {data_config['val']}")
+
+        # Add this to your code
+        assert os.path.exists(data_config["train"]), f"Train images missing: {data_config['train']}"
+        assert os.path.exists(data_config["val"]), f"Validation images missing: {data_config['val']}"
+
+        # Initialize model and train with the corrected config
         model = YOLO(self.config.model)
         results = model.train(
-            data=Path(dataset.location) / "data.yaml",  # Direct path to data.yaml
+            data=data_config,  # Pass the corrected config dictionary (not the YAML file path)
             epochs=self.config.epochs,
             batch=self.config.batch,
             imgsz=self.config.imgsz,

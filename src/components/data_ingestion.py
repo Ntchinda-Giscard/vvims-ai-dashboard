@@ -14,6 +14,6 @@ class DataIngestion(DataIngestor):
         project = rf.workspace(self.config.workspace).project(self.config.project)
         version = project.version(self.config.version)
 
-        dataset = version.download(self.config.dataset)
+        dataset = version.download(self.config.dataset, location="/app", overwrite=True)
 
         return  dataset
