@@ -27,7 +27,7 @@ class YoloModelTrainer(ModelTrainer):
         # Train
         model = YOLO(self.config.model)
         results = model.train(
-            data=Path(dataset.location),  # Direct path to data.yaml
+            data=Path(dataset.location) / "data.yaml",  # Direct path to data.yaml
             epochs=self.config.epochs,
             batch=self.config.batch,
             imgsz=self.config.imgsz,
