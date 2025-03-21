@@ -10,6 +10,6 @@ model_trainer:
   epochs: 100
   batch: 8
   imgsz: 320
-  device: 0
+  device: "cpu"
   scale: 0.9
   mixup: 0.0
