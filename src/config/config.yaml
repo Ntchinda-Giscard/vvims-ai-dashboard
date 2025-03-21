@@ -7,9 +7,9 @@ data_ingestion:
 model_trainer:
   data: "id_card_annotation-1"
   model: "yolov8n.pt"
-  epochs: 200
-  batch: 32
-  imgsz: 640
-  device: "cpu"
+  epochs: 100
+  batch: 8
+  imgsz: 320
+  device: 0
   scale: 0.9
   mixup: 0.0
