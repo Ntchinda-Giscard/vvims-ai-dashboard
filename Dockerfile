@@ -46,6 +46,5 @@ RUN zenml integration install s3 -y
 COPY --chown=myuser . /app
 
 # Step 9: Command to run the application
-# RUN python run.py
-# CMD ["streamlit", "run", "app.py", "--server.port", "7860"]
-CMD ["python", "run.py"]
+RUN python run.py
+CMD ["streamlit", "run", "app.py", "--server.port", "7860"]
