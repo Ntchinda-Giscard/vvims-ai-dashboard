@@ -1,0 +1,11 @@
+yolo11l.pt
+yolo11n.pt
+yolov8l.pt
+yolov8n.pt
+.lightning_studio/
+id_card_annotation-1/
+datasetdownloaded_file.zip
+*.pt
+.conda/
+conda
+.venv

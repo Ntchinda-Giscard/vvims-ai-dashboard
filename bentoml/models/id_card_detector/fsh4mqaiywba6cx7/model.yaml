@@ -1,0 +1,18 @@
+name: id_card_detector
+version: fsh4mqaiywba6cx7
+module: bentoml.pytorch
+labels: {}
+options:
+  partial_kwargs: {}
+metadata: {}
+context:
+  framework_name: torch
+  framework_versions:
+    torch: 2.2.1+cu121
+  bentoml_version: 1.4.5
+  python_version: 3.10.10
+signatures:
+  __call__:
+    batchable: false
+api_version: v1
+creation_time: '2025-03-24T15:32:19.769139+00:00'

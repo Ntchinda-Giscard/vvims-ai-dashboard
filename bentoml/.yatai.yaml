@@ -1,0 +1,6 @@
+contexts:
+- api_token: cvgm310pq80h452omsg0
+  email: giscardntchinda@gmail.com
+  endpoint: https://vvims-ai.cloud.bentoml.com
+  name: default
+current_context_name: default

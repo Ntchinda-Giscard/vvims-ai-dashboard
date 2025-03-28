@@ -1,0 +1,15 @@
+data_ingestion:
+  workspace: "ntchindagiscard"
+  project: "id_card_annotation"
+  version: 1
+  dataset: "yolov8"
+
+model_trainer:
+  data: "id_card_annotation-1"
+  model: "yolo11l.pt"
+  epochs: 100
+  batch: 8
+  imgsz: 620
+  device: "0"
+  scale: 0.9
+  mixup: 0.0
