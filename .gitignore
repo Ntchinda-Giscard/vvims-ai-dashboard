@@ -9,3 +9,4 @@ datasetdownloaded_file.zip
 .conda/
 conda
 .venv
+raw/
