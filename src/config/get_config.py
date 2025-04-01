@@ -1,7 +1,7 @@
 from src import read_yaml
 import os
 from src.constants import CONFIG_FILE_PATH
-from src.entity.config_entity import DataIngestionConfig, ModelTrainerConfig
+from src.entity.config_entity import DataIngestionConfig, MilDatasetConfig, ModelTrainerConfig
 from pathlib import Path
 
 
@@ -39,3 +39,7 @@ class ConfigManager:
         )
 
         return model_trainer_config
+
+    def get_mil_dataset_config(self) -> MilDatasetConfig:
+        mil_dataset_config = -1
+        return mil_dataset_config

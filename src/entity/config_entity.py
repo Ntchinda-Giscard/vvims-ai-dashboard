@@ -19,3 +19,10 @@ class ModelTrainerConfig:
     device: str
     scale: int
     mixup: int
+
+@dataclass
+class MilDatasetConfig:
+    anomal_video_dir: str
+    normal_video_dir: str
+    classes: dict
+    

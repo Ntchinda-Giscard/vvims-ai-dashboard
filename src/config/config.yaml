@@ -13,3 +13,9 @@ model_trainer:
   device: "0"
   scale: 0.9
   mixup: 0.0
+
+mil_data:
+  anomal_video_dir: ['raw/Anomaly-Videos-Part-1', 'raw/Anomaly-Videos-Part-2', 'raw/Anomaly-Videos-Part-3', 'raw/Anomaly-Videos-Part-4']
+  normal_video_dir: ['raining-Normal-Videos-Part-1', 'raining-Normal-Videos-Part-2']
+  classes:
+    
